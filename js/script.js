@@ -60,15 +60,29 @@ function getRandomQuote(array) {
   return randomQuote;
 }
 
+/*Gets a random color for the backgroung. Found this work around on a mix
+of MDN and stackoverflow. Not 100% certain of how it works*/
+function getRandomColor(){
+   // 16777215 (decimal) == ffffff in hexidecimal
+   var newColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+   // Convert hex to RGB:
+   var rgbColor = newColor.replace('#','');
+   var r = parseInt(rgbColor.substring(0,2), 16);
+   var g = parseInt(rgbColor.substring(2,4), 16);
+   var b = parseInt(rgbColor.substring(4,6), 16);
+   var result = 'rgba(' + r + ',' + g + ',' + b + ')';
+   document.body.style.backgroundColor = newColor;
+}
+
 //Calls the getRandomQuote function and stores the results in a variable
 function printQuote() {
   randomQuote = getRandomQuote(quotes);
-//Variable will store an HTML string of quotes/properties
+  //Variable will store an HTML string of quotes/properties
   var quoteString;
-//Begin creating the random quote HTML string
+  //Begin creating the random quote HTML string
   quoteString = '<p class="quote">' + randomQuote.quote + "</p>";
   quoteString += '<p class="source">' + randomQuote.source;
-//Conditional statements for optional quote properties
+  //Conditional statements for optional quote properties
   if (randomQuote.citation) {
     quoteString += '<span class="citation">' + randomQuote.citation + '</span>';
   }
@@ -79,8 +93,10 @@ function printQuote() {
     quoteString += '<h4>' + randomQuote.tag + '</h4>';
   }
   quoteString += '</p>';
-//Displays the HTML string 
+  //Displays the HTML string
   document.getElementById('quote-box').innerHTML = quoteString
+  //displays a random backgroung color
+  getRandomColor();
 }
 
 // event listener to respond to "Show another quote" button clicks
