@@ -61,8 +61,8 @@ function getRandomQuote(array) {
   return randomQuote;
 }
 
-/*Gets a random color for the backgroung. Found this work around on a mix
-of MDN and stackoverflow. Not 100% certain of how it works*/
+/*Gets a random color for the backgroung. Found this work around on
+stackoverflow.com. From user: Scott Marcus, 10/2017. Not 100% how to break it down*/
 function getRandomColor(){
    // 16777215 (decimal) == ffffff in hexidecimal
    var newColor = '#'+Math.floor(Math.random()*16777215).toString(16);
@@ -99,6 +99,8 @@ function printQuote() {
   //displays a random backgroung color
   getRandomColor();
 }
+//calls the printQuote every 30 secs.
+setInterval(printQuote, 30000);
 
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
