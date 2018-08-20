@@ -55,28 +55,46 @@ var quotes = [
    tag: "tag 10"},
 ];
 
+//this will be the name of the timer set by the setInterval method
+var quoteTimeout;
+
+/*the setInterval method will call the printQuote functionevery 30 secs. The
+method would continue to run at the specified time unless the clearInterval
+method is used to stop it. Which is what I am doing here.
+*/
+function startTime() {
+  quoteTimeout = setInterval(printQuote, 5000);
+}
+function timeReset() {
+  clearInterval(quoteTimeout);
+}
+
 //Selects and returns a random quote object from the quotes array.
 function getRandomQuote(array) {
   var randomQuote = array[Math.floor(Math.random() * (quotes.length))];
   return randomQuote;
 }
 
-/*Gets a random color for the backgroung. Found this work around on
-stackoverflow.com. From user: Scott Marcus, 10/2017. Not 100% how to break it down*/
+//Gets a random color for the backgroung.
 function getRandomColor(){
-   // 16777215 (decimal) == ffffff in hexidecimal
-   var newColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-   // Convert hex to RGB:
-   var rgbColor = newColor.replace('#','');
-   var r = parseInt(rgbColor.substring(0,2), 16);
-   var g = parseInt(rgbColor.substring(2,4), 16);
-   var b = parseInt(rgbColor.substring(4,6), 16);
-   var result = 'rgba(' + r + ',' + g + ',' + b + ')';
-   document.body.style.backgroundColor = newColor;
+  //the hexadecimal values are stored in a variable
+  var hexValues = '0123456789ABCDEF';
+  //notation for hexadecimal value
+  var newColor = '#';
+  /*to get a random hexadecimal notation (#RRBBGG), a loop that stores
+  a random value from the letters variable is used here
+  */
+  for (var i = 0; i < 6; i++) {
+    newColor += hexValues[Math.floor(Math.random() * 16)];
+  }
+  //the newColor variable is assigned to the background property
+  document.body.style.backgroundColor = newColor;
 }
 
 //Calls the getRandomQuote function and stores the results in a variable
 function printQuote() {
+  //reset timer
+  timeReset();
   randomQuote = getRandomQuote(quotes);
   //Variable will store an HTML string of quotes/properties
   var quoteString;
@@ -98,9 +116,9 @@ function printQuote() {
   document.getElementById('quote-box').innerHTML = quoteString
   //displays a random backgroung color
   getRandomColor();
+//set timer
+  startTime();
 }
-//calls the printQuote every 30 secs.
-setInterval(printQuote, 30000);
 
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
