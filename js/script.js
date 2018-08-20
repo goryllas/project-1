@@ -52,7 +52,7 @@ var quotes = [
    source: "Walt Disney",
    citation: "Wall Street Journal",
    year: "1958",
-   tag: "tag 10"},
+   tag: "dream, perfection"},
 ];
 
 //this will be the name of the timer set by the setInterval method
@@ -63,7 +63,7 @@ method would continue to run at the specified time unless the clearInterval
 method is used to stop it.
 */
 function startTime() {
-  quoteTimeout = setInterval(printQuote, 5000);
+  quoteTimeout = setInterval(printQuote, 30000);
 }
 function timeReset() {
   clearInterval(quoteTimeout);
