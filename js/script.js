@@ -79,7 +79,7 @@ function getRandomQuote(array) {
 function getRandomColor(){
   //the hexadecimal values are stored in a variable.
   var hexValues = '0123456789ABCDEF';
-  //notation to start stringing hexadecimal value
+  //start hexadecimal notation string
   var newColor = '#';
   /*to get a random hexadecimal notation (#RRBBGG), a loop that stores
   a random value from the hexValues variable is used here. Only need 6 values
