@@ -58,9 +58,9 @@ var quotes = [
 //this will be the name of the timer set by the setInterval method
 var quoteTimeout;
 
-/*the setInterval method will call the printQuote functionevery 30 secs. The
+/*the setInterval method will call the printQuote function every 30 secs. The
 method would continue to run at the specified time unless the clearInterval
-method is used to stop it. Which is what I am doing here.
+method is used to stop it.
 */
 function startTime() {
   quoteTimeout = setInterval(printQuote, 5000);
@@ -77,12 +77,12 @@ function getRandomQuote(array) {
 
 //Gets a random color for the backgroung.
 function getRandomColor(){
-  //the hexadecimal values are stored in a variable
+  //the hexadecimal values are stored in a variable.
   var hexValues = '0123456789ABCDEF';
-  //notation for hexadecimal value
+  //notation to start stringing hexadecimal value
   var newColor = '#';
   /*to get a random hexadecimal notation (#RRBBGG), a loop that stores
-  a random value from the letters variable is used here
+  a random value from the hexValues variable is used here. Only need 6 values
   */
   for (var i = 0; i < 6; i++) {
     newColor += hexValues[Math.floor(Math.random() * 16)];
