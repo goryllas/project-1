@@ -75,7 +75,7 @@ function getRandomQuote(array) {
   return randomQuote;
 }
 
-//Gets a random color for the backgroung.
+//Gets a random color for the background.
 function getRandomColor(){
   //the hexadecimal values are stored in a variable.
   var hexValues = '0123456789ABCDEF';
