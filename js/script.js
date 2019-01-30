@@ -1,7 +1,7 @@
 //TreeHouse Project 1 - Random Quote Generator
 
 //Array of objects is storing data for the quotes.
-var quotes = [
+const quotes = [
   {quote: "If you aren't fired with enthusiasm, you will be fired with enthusiasm.",
    source: "Vince Lombardi",
    citation: "Sportswit, p.169",
@@ -56,35 +56,33 @@ var quotes = [
 ];
 
 //this will be the name of the timer set by the setInterval method
-var quoteTimeout;
+const quoteTimeout;
 
 /*the setInterval method will call the printQuote function every 30 secs. The
 method would continue to run at the specified time unless the clearInterval
 method is used to stop it.
 */
-function startTime() {
+const startTime = () => {
   quoteTimeout = setInterval(printQuote, 30000);
 }
-function timeReset() {
+const timeReset = () => {
   clearInterval(quoteTimeout);
 }
 
 //Selects and returns a random quote object from the quotes array.
-function getRandomQuote(array) {
-  var randomQuote = array[Math.floor(Math.random() * (quotes.length))];
+const getRandomQuote = (array) => {
+  let randomQuote = array[Math.floor(Math.random() * (quotes.length))];
   return randomQuote;
 }
 
 //Gets a random color for the background.
-function getRandomColor(){
-  //the hexadecimal values are stored in a variable.
-  var hexValues = '0123456789ABCDEF';
-  //start hexadecimal notation string
-  var newColor = '#';
+const getRandomColor = () => {
+  let hexValues = '0123456789ABCDEF';
+  let newColor = '#';
   /*to get a random hexadecimal notation (#RRBBGG), a loop that stores
   a random value from the hexValues variable is used here. Only need 6 values
   */
-  for (var i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) {
     newColor += hexValues[Math.floor(Math.random() * 16)];
   }
   //the newColor variable is assigned to the background property
@@ -92,12 +90,12 @@ function getRandomColor(){
 }
 
 //Calls the getRandomQuote function and stores the results in a variable
-function printQuote() {
+const printQuote = () => {
   //reset timer
   timeReset();
   randomQuote = getRandomQuote(quotes);
   //Variable will store an HTML string of quotes/properties
-  var quoteString;
+  let quoteString;
   //Begin creating the random quote HTML string
   quoteString = '<p class="quote">' + randomQuote.quote + "</p>";
   quoteString += '<p class="source">' + randomQuote.source;
